@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 import AudioToolbox
+import Alamofire
+import SwiftyJSON
+
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate {
     
@@ -20,6 +23,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //Properties
     let locationManager = CLLocationManager()
     let gestureRecognizer = UILongPressGestureRecognizer()
+    var alamoLat:String = ""
+    var alamoLon:String = ""
+    var alamoNote:String = ""
+    var alamoTime:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +72,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             
-            print("Refresh Control")
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+           RefreshControl()
             
         }
     }
@@ -92,6 +98,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
     
+    func RefreshControl() {
+        print("Refresh Control")
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+
+    }
+    
     //Gesture Recognizer Selector
     func handleTap() {
         
@@ -99,15 +111,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let location = gestureRecognizer.location(in: mapView)
         let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
-        print(coordinate)
+        print(coordinate.latitude)
+        print(coordinate.longitude)
+        
+        //convert to string for Alamofire
+        var latString = String(coordinate.latitude)
+        var lonString = String(coordinate.longitude)
+        self.alamoLat = latString
+        self.alamoLon = lonString
+
         
         //Create & Display Alert
-        let CreateSpotAlert = UIAlertController(title: "Create Parking Spot", message: "Create a parking spot for your current location?" , preferredStyle: .alert)
+        let CreateSpotAlert = UIAlertController(title: "Create Parking Spot", message: "Create a parking spot for this location?" , preferredStyle: .alert)
         
         let todaysDate = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy hh:mm"
+        dateFormatter.dateFormat = "MM-dd-yyyy h:mm a"
         let stringDate = dateFormatter.string(from: todaysDate)
+        self.alamoTime = stringDate
         
         CreateSpotAlert.addTextField { (textField : UITextField!) -> Void in
             
@@ -126,11 +147,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             // Add Annotation
             let annotation = MKPointAnnotation()
-            annotation.title = tf1.text
-            annotation.subtitle = tf2.text
+            annotation.title = tf2.text
+            annotation.subtitle = tf1.text
+            self.alamoNote = tf1.text!
             annotation.coordinate = coordinate
             self.mapView.showAnnotations([annotation], animated: true)
             self.mapView.selectAnnotation(annotation, animated: true)
+            
+            //Alamofire off of the main thread
+            DispatchQueue.global(qos: .background).async {
+                
+                //Alamofire POST
+                
+                
+            }
+            
             
         })
         
@@ -161,6 +192,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let latitude: Double = location!.coordinate.latitude
         let longitude: Double = location!.coordinate.longitude
         
+        //convert to string for Alamofire
+        var latString = String(describing: location?.coordinate.latitude)
+        let lonString = String(describing: location?.coordinate.longitude)
+        self.alamoLat = latString
+        self.alamoLon = lonString
+        
         print("current latitude :: \(latitude)")
         print("current longitude :: \(longitude)")
         let Spotlocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -170,8 +207,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let todaysDate = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy hh:mm"
+        dateFormatter.dateFormat = "MM-dd-yyyy h:mm a"
         let stringDate = dateFormatter.string(from: todaysDate)
+        self.alamoTime = stringDate
         
         CreateSpotAlert.addTextField { (textField : UITextField!) -> Void in
             
@@ -190,11 +228,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             // Add Annotation
             let annotation = MKPointAnnotation()
-            annotation.title = tf1.text
-            annotation.subtitle = tf2.text
+            annotation.title = tf2.text
+            annotation.subtitle = tf1.text
+            self.alamoNote = tf1.text!
             annotation.coordinate = Spotlocation
             self.mapView.showAnnotations([annotation], animated: true)
             self.mapView.selectAnnotation(annotation, animated: true)
+            
+            //Alamofire off of the main thread
+            DispatchQueue.global(qos: .background).async {
+                
+                //Alamofire POST
+                
+                
+            }
+
             
         })
         

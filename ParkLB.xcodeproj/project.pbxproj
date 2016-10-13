@@ -15,6 +15,7 @@
 		8FAED4231DAD497300BD6F3A /* ParkLBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAED4221DAD497300BD6F3A /* ParkLBTests.swift */; };
 		8FAED42E1DAD497400BD6F3A /* ParkLBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAED42D1DAD497400BD6F3A /* ParkLBUITests.swift */; };
 		8FAED43D1DAD4B8600BD6F3A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAED43C1DAD4B8600BD6F3A /* MapKit.framework */; };
+		F0356160D3AF3008A8CA64BA /* Pods_ParkLB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 206419DB515BBF8E9AC8EA73 /* Pods_ParkLB.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		206419DB515BBF8E9AC8EA73 /* Pods_ParkLB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkLB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DDD5E966D5DEB1C91DE41C5 /* Pods-ParkLB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkLB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkLB/Pods-ParkLB.debug.xcconfig"; sourceTree = "<group>"; };
 		8FAED40A1DAD497300BD6F3A /* ParkLB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkLB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FAED40D1DAD497300BD6F3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FAED40F1DAD497300BD6F3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		8FAED42F1DAD497400BD6F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FAED43C1DAD4B8600BD6F3A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8FAED43E1DAF0C4200BD6F3A /* scratchPad.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = scratchPad.playground; sourceTree = "<group>"; };
+		C6E0466E53E90D4109E90D02 /* Pods-ParkLB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkLB.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkLB/Pods-ParkLB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FAED43D1DAD4B8600BD6F3A /* MapKit.framework in Frameworks */,
+				F0356160D3AF3008A8CA64BA /* Pods_ParkLB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8DF90C2ADF938365BF3C77B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2DDD5E966D5DEB1C91DE41C5 /* Pods-ParkLB.debug.xcconfig */,
+				C6E0466E53E90D4109E90D02 /* Pods-ParkLB.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8FAED4011DAD497300BD6F3A = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +100,7 @@
 				8FAED42C1DAD497400BD6F3A /* ParkLBUITests */,
 				8FAED40B1DAD497300BD6F3A /* Products */,
 				8FAED43B1DAD4B8600BD6F3A /* Frameworks */,
+				8DF90C2ADF938365BF3C77B9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				8FAED43C1DAD4B8600BD6F3A /* MapKit.framework */,
+				206419DB515BBF8E9AC8EA73 /* Pods_ParkLB.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -146,9 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8FAED4321DAD497400BD6F3A /* Build configuration list for PBXNativeTarget "ParkLB" */;
 			buildPhases = (
+				7C82EA9EE93262636FCFB1A0 /* [CP] Check Pods Manifest.lock */,
 				8FAED4061DAD497300BD6F3A /* Sources */,
 				8FAED4071DAD497300BD6F3A /* Frameworks */,
 				8FAED4081DAD497300BD6F3A /* Resources */,
+				186DC9F85384E60041977734 /* [CP] Embed Pods Frameworks */,
+				2B76B5509574C77987875075 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,6 +290,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		186DC9F85384E60041977734 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParkLB/Pods-ParkLB-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B76B5509574C77987875075 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParkLB/Pods-ParkLB-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C82EA9EE93262636FCFB1A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8FAED4061DAD497300BD6F3A /* Sources */ = {
@@ -426,6 +493,7 @@
 		};
 		8FAED4331DAD497400BD6F3A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DDD5E966D5DEB1C91DE41C5 /* Pods-ParkLB.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62FY2PCQP3;
@@ -439,6 +507,7 @@
 		};
 		8FAED4341DAD497400BD6F3A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6E0466E53E90D4109E90D02 /* Pods-ParkLB.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62FY2PCQP3;
