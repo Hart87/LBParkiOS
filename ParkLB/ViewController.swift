@@ -158,12 +158,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             DispatchQueue.global(qos: .background).async {
                 
                 //Alamofire POST
+                let postEndpoint:String = "http://localhost:3000/spots"
                 
+                //Check these names - just markups
+                let params: [String:Any]? = [
+                    "spots": [
+                        "notes": self.alamoNote,
+                        "time": self.alamoTime,
+                        "latitude" : self.alamoLat,
+                        "longitude" : self.alamoLon
+                    ]
+                ]
                 
-            }
+                Alamofire.request(postEndpoint, method: .post, parameters: params).response { response in
+                    print(response.response)
+                    print(response.data)
+                    print(response.request)
+                    
+                } // end POST request
+            } // end background thread
             
             
-        })
+        }) // end Yes action for alert
         
         //Cancel Action
         let cancelAction = UIAlertAction(title: "Back", style: UIAlertActionStyle.cancel, handler: nil)
@@ -239,12 +255,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             DispatchQueue.global(qos: .background).async {
                 
                 //Alamofire POST
+                let postEndpoint:String = "http://localhost:3000/spots"
                 
+                //Check these names - just markups
+                let params: [String:Any]? = [
+                    "spots": [
+                        "notes": self.alamoNote,
+                        "time": self.alamoTime,
+                        "latitude" : self.alamoLat,
+                        "longitude" : self.alamoLon
+                    ]
+                ]
                 
-            }
-
+                Alamofire.request(postEndpoint, method: .post, parameters: params).response { response in
+                    print(response.response)
+                    print(response.data)
+                    print(response.request)
+                    
+                } // end POST request
+            }// end background threat
             
-        })
+        }) // end YES action for alert
         
         //Cancel Action
         let cancelAction = UIAlertAction(title: "Back", style: UIAlertActionStyle.cancel, handler: nil)
