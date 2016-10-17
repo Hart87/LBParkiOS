@@ -27,10 +27,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var alamoLon:String = ""
     var alamoNote:String = ""
     var alamoTime:String = ""
+    var pins = [Pin]() //Array for annotations from object (Pin.swift)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Retrieve and plot spots
+        GetSpots()
+    
         //Status bar
         UIApplication.shared.statusBarStyle = .lightContent
 
@@ -72,7 +76,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             
-           RefreshControl()
+           //Delete Annotations to clear map
+            let allAnnotations = self.mapView.annotations
+            self.mapView.removeAnnotations(allAnnotations)
+            
+           //Retrieve spot information and plot annotations
+           GetSpots()
             
         }
     }
@@ -98,10 +107,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
     
-    func RefreshControl() {
-        print("Refresh Control")
+    func GetSpots() {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-
+        var urlString:String = "http://localhost:3000/api/spots"
+        
+        //Alamofire GET
+        Alamofire.request(urlString).responseJSON { response in
+            print(response.result.value)
+            
+            //parse JSON
+            if let JSONresp = response.result.value {
+                
+                let json = JSON(JSONresp)
+                
+                for pinResp in json.array! {
+                    
+                    let note: String = pinResp["note"].stringValue
+                    let time: String = pinResp["time"].stringValue
+                    let latit: Double = pinResp["latitude"].doubleValue
+                    let longit: Double = pinResp["longitude"].doubleValue
+                    
+                    //Array Time
+                    var pinsApp:Pin = Pin(note: note , time: time, latitude: latit, longitude: longit)
+                    self.pins.append(pinsApp)
+                    print("Items in array: \(self.pins.count)")
+                    
+                    //Plot Annotations
+                    let annotation = MKPointAnnotation()
+                    annotation.title = pinsApp.time
+                    annotation.subtitle = pinsApp.note
+                    let Spotlocation = CLLocationCoordinate2D(latitude: pinsApp.latitude, longitude: pinsApp.longitude)
+                    annotation.coordinate = Spotlocation
+                    self.mapView.showAnnotations([annotation], animated: true)
+                    self.mapView.selectAnnotation(annotation, animated: true)
+                    
+                } // end for loop
+                
+                //Center the mapView onto the users location
+                self.zoomToUserLocationInMapView(self.mapView)
+            }
+        }
     }
     
     //Gesture Recognizer Selector
@@ -158,22 +203,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             DispatchQueue.global(qos: .background).async {
                 
                 //Alamofire POST
-                let postEndpoint:String = "http://localhost:3000/spots"
+                let postEndpoint:String = "http://localhost:3000/api/spots"
                 
                 //Check these names - just markups
                 let params: [String:Any]? = [
-                    "spots": [
-                        "notes": self.alamoNote,
+                    "spot": [
+                        "note": self.alamoNote,
                         "time": self.alamoTime,
                         "latitude" : self.alamoLat,
                         "longitude" : self.alamoLon
                     ]
                 ]
                 
+                
                 Alamofire.request(postEndpoint, method: .post, parameters: params).response { response in
-                    print(response.response)
-                    print(response.data)
-                    print(response.request)
+                    debugPrint(response)
                     
                 } // end POST request
             } // end background thread
@@ -209,13 +253,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let longitude: Double = location!.coordinate.longitude
         
         //convert to string for Alamofire
-        var latString = String(describing: location?.coordinate.latitude)
-        let lonString = String(describing: location?.coordinate.longitude)
+        let latString = String(location!.coordinate.latitude)
+        let lonString = String(location!.coordinate.longitude)
         self.alamoLat = latString
         self.alamoLon = lonString
         
-        print("current latitude :: \(latitude)")
-        print("current longitude :: \(longitude)")
+        print(self.alamoLat)
+        print(self.alamoLon)
         let Spotlocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         //Create & Display Alert
@@ -255,12 +299,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             DispatchQueue.global(qos: .background).async {
                 
                 //Alamofire POST
-                let postEndpoint:String = "http://localhost:3000/spots"
+                let postEndpoint:String = "http://localhost:3000/api/spots"
                 
                 //Check these names - just markups
                 let params: [String:Any]? = [
-                    "spots": [
-                        "notes": self.alamoNote,
+                    "spot": [
+                        "note": self.alamoNote,
                         "time": self.alamoTime,
                         "latitude" : self.alamoLat,
                         "longitude" : self.alamoLon
