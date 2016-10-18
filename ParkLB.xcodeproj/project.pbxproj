@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8F23D8E41DB094A300E76843 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23D8E31DB094A300E76843 /* Pin.swift */; };
+		8F9A0B991DB59E0100EC95F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F9A0B981DB59E0100EC95F2 /* GoogleService-Info.plist */; };
+		8F9A0B9E1DB5A20400EC95F2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9A0B9C1DB5A20400EC95F2 /* Fabric.framework */; };
+		8F9A0BA11DB5A53100EC95F2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9A0BA01DB5A53100EC95F2 /* Crashlytics.framework */; };
 		8FAED40E1DAD497300BD6F3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAED40D1DAD497300BD6F3A /* AppDelegate.swift */; };
 		8FAED4101DAD497300BD6F3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAED40F1DAD497300BD6F3A /* ViewController.swift */; };
 		8FAED4131DAD497300BD6F3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FAED4111DAD497300BD6F3A /* Main.storyboard */; };
@@ -40,6 +43,11 @@
 		206419DB515BBF8E9AC8EA73 /* Pods_ParkLB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkLB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DDD5E966D5DEB1C91DE41C5 /* Pods-ParkLB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkLB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkLB/Pods-ParkLB.debug.xcconfig"; sourceTree = "<group>"; };
 		8F23D8E31DB094A300E76843 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		8F9A0B981DB59E0100EC95F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8F9A0B9A1DB59EB600EC95F2 /* ParkLB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkLB-Bridging-Header.h"; sourceTree = "<group>"; };
+		8F9A0B9C1DB5A20400EC95F2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		8F9A0B9D1DB5A20400EC95F2 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = SOURCE_ROOT; };
+		8F9A0BA01DB5A53100EC95F2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		8FAED40A1DAD497300BD6F3A /* ParkLB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkLB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FAED40D1DAD497300BD6F3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FAED40F1DAD497300BD6F3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +73,8 @@
 			files = (
 				8FAED43D1DAD4B8600BD6F3A /* MapKit.framework in Frameworks */,
 				F0356160D3AF3008A8CA64BA /* Pods_ParkLB.framework in Frameworks */,
+				8F9A0BA11DB5A53100EC95F2 /* Crashlytics.framework in Frameworks */,
+				8F9A0B9E1DB5A20400EC95F2 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +129,13 @@
 		8FAED40C1DAD497300BD6F3A /* ParkLB */ = {
 			isa = PBXGroup;
 			children = (
+				8F9A0B981DB59E0100EC95F2 /* GoogleService-Info.plist */,
+				8F9A0BA01DB5A53100EC95F2 /* Crashlytics.framework */,
+				8F9A0B9C1DB5A20400EC95F2 /* Fabric.framework */,
+				8F9A0B9D1DB5A20400EC95F2 /* Answers.framework */,
 				8FAED40D1DAD497300BD6F3A /* AppDelegate.swift */,
 				8FAED40F1DAD497300BD6F3A /* ViewController.swift */,
+				8F9A0B9A1DB59EB600EC95F2 /* ParkLB-Bridging-Header.h */,
 				8F23D8E31DB094A300E76843 /* Pin.swift */,
 				8FAED43E1DAF0C4200BD6F3A /* scratchPad.playground */,
 				8FAED4111DAD497300BD6F3A /* Main.storyboard */,
@@ -171,6 +186,7 @@
 				8FAED4081DAD497300BD6F3A /* Resources */,
 				186DC9F85384E60041977734 /* [CP] Embed Pods Frameworks */,
 				2B76B5509574C77987875075 /* [CP] Copy Pods Resources */,
+				8F9A0B9B1DB5A1C400EC95F2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -273,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FAED4181DAD497300BD6F3A /* LaunchScreen.storyboard in Resources */,
+				8F9A0B991DB59E0100EC95F2 /* GoogleService-Info.plist in Resources */,
 				8FAED4151DAD497300BD6F3A /* Assets.xcassets in Resources */,
 				8FAED4131DAD497300BD6F3A /* Main.storyboard in Resources */,
 			);
@@ -339,6 +356,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		8F9A0B9B1DB5A1C400EC95F2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run d21892c8888773f2488cde4eef49d2ab31f78de2 b63e6aa24e2e9d2a121a80f6e0e238e06128d74971f6c4c40ef47143919a5d54";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -501,6 +531,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62FY2PCQP3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ParkLB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = A2.ParkLB;
@@ -515,6 +549,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62FY2PCQP3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ParkLB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = A2.ParkLB;

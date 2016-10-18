@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().titleTextAttributes =
                 [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:barFont]
         }
+        
+        
+        //Twitter Answers 
+        Fabric.with([Answers.self, Crashlytics.self])
+        Fabric.sharedSDK().debug = true
         
         return true
     }

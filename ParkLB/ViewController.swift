@@ -87,6 +87,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     
+    @IBAction func RefreshButton(_ sender: AnyObject) {
+        
+        //Delete Annotations to clear map
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        
+        //Retrieve spot information and plot annotations
+        GetSpots()
+        
+    }
+    
+    
     
     @IBAction func ChangeMap(_ sender: AnyObject) {
         
@@ -109,7 +121,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func GetSpots() {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        var urlString:String = "http://localhost:3000/api/spots"
+        var urlString:String = "http://parklbny87.herokuapp.com/api/spots"
         
         //Alamofire GET
         Alamofire.request(urlString).responseJSON { response in
@@ -203,7 +215,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             DispatchQueue.global(qos: .background).async {
                 
                 //Alamofire POST
-                let postEndpoint:String = "http://localhost:3000/api/spots"
+                let postEndpoint:String = "http://parklbny87.herokuapp.com/api/spots"
                 
                 //Check these names - just markups
                 let params: [String:Any]? = [
@@ -299,7 +311,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             DispatchQueue.global(qos: .background).async {
                 
                 //Alamofire POST
-                let postEndpoint:String = "http://localhost:3000/api/spots"
+                let postEndpoint:String = "http://parklbny87.herokuapp.com/api/spots"
                 
                 //Check these names - just markups
                 let params: [String:Any]? = [

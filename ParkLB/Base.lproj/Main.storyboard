@@ -37,7 +37,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="yXh-O7-yMz"/>
-                                    <barButtonItem systemItem="refresh" id="3YB-P0-QJF"/>
+                                    <barButtonItem systemItem="refresh" id="3YB-P0-QJF">
+                                        <connections>
+                                            <action selector="RefreshButton:" destination="BYZ-38-t0r" id="DMt-M1-rKv"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="MG6-ur-XbG"/>
                                     <barButtonItem systemItem="search" id="Y8B-Jz-AGL">
                                         <connections>
