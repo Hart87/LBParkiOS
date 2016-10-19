@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import GoogleMobileAds
 
 
 @UIApplicationMain
@@ -32,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Twitter Answers 
         Fabric.with([Answers.self, Crashlytics.self])
         Fabric.sharedSDK().debug = true
+        
+        //Google AdMob
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-3278937459625561~9247856531");
         
         return true
     }

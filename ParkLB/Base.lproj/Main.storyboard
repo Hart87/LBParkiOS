@@ -52,23 +52,39 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpH-Mz-AyM" customClass="GADBannerView">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="O2g-hg-2Nd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="b3H-Ex-1PI" firstAttribute="top" secondItem="iNI-QU-new" secondAttribute="bottom" id="1u8-co-1FA"/>
                             <constraint firstItem="iNI-QU-new" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4rJ-Yf-gzB"/>
                             <constraint firstItem="b3H-Ex-1PI" firstAttribute="leading" secondItem="iNI-QU-new" secondAttribute="leading" id="6Yu-9O-kuE"/>
+                            <constraint firstItem="cpH-Mz-AyM" firstAttribute="top" secondItem="iNI-QU-new" secondAttribute="bottom" id="7Ob-ZL-g8i"/>
                             <constraint firstItem="iNI-QU-new" firstAttribute="trailing" secondItem="Nh7-BQ-GvC" secondAttribute="trailing" id="7Qt-oV-Fjf"/>
                             <constraint firstItem="Nh7-BQ-GvC" firstAttribute="leading" secondItem="iNI-QU-new" secondAttribute="leading" id="Hsx-R4-S32"/>
                             <constraint firstItem="b3H-Ex-1PI" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="K6F-gf-QGd"/>
+                            <constraint firstItem="cpH-Mz-AyM" firstAttribute="leading" secondItem="b3H-Ex-1PI" secondAttribute="leading" constant="27" id="L7n-tl-4HT"/>
+                            <constraint firstItem="cpH-Mz-AyM" firstAttribute="trailing" secondItem="b3H-Ex-1PI" secondAttribute="trailing" constant="-28" id="M9U-VZ-qKP"/>
+                            <constraint firstItem="b3H-Ex-1PI" firstAttribute="top" secondItem="cpH-Mz-AyM" secondAttribute="bottom" id="W1m-i0-k34"/>
                             <constraint firstItem="b3H-Ex-1PI" firstAttribute="trailing" secondItem="Nh7-BQ-GvC" secondAttribute="trailing" id="Z2o-mE-swF"/>
                             <constraint firstItem="Nh7-BQ-GvC" firstAttribute="top" secondItem="iNI-QU-new" secondAttribute="top" constant="-28" id="f60-WS-AjZ"/>
                             <constraint firstItem="iNI-QU-new" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="28" id="qPM-dX-zwT"/>
                             <constraint firstAttribute="trailing" secondItem="Nh7-BQ-GvC" secondAttribute="trailing" id="sp5-J5-6Ye"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PARK LB" id="awh-WA-DIY"/>
+                    <navigationItem key="navigationItem" title="PARK LB" id="awh-WA-DIY">
+                        <barButtonItem key="rightBarButtonItem" image="reveal-icon" id="O1I-Sv-UMR">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="Directions:" destination="BYZ-38-t0r" id="jTn-Il-K5f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="bannerView" destination="cpH-Mz-AyM" id="2IV-Mo-c9R"/>
                         <outlet property="mapView" destination="iNI-QU-new" id="ISW-ii-jiq"/>
                         <outlet property="segmentedControl" destination="Nh7-BQ-GvC" id="9hV-Mv-Gt1"/>
                     </connections>
@@ -96,4 +112,7 @@
             <point key="canvasLocation" x="-95.200000000000003" y="-543.77811094452773"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reveal-icon" width="22" height="17"/>
+    </resources>
 </document>

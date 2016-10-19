@@ -12,6 +12,7 @@ import CoreLocation
 import AudioToolbox
 import Alamofire
 import SwiftyJSON
+import GoogleMobileAds
 
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate {
@@ -19,6 +20,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //Outlets
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var bannerView: GADBannerView!
+    
     
     //Properties
     let locationManager = CLLocationManager()
@@ -69,6 +72,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             mapView.addGestureRecognizer(gestureRecognizer)
             //Shake
             self.becomeFirstResponder()
+        
+        //Google AdMob
+        print("*******Google Mobile Ads SDK version: \(GADRequest.sdkVersion())********")
+        bannerView.adUnitID = "ca-app-pub-3278937459625561/1724589732"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         
         
     }
@@ -358,6 +367,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func Zoom(_ sender: AnyObject) {
         mapView.userTrackingMode = .follow
         zoomToUserLocationInMapView(mapView)
+    }
+    
+    
+    @IBAction func Directions(_ sender: AnyObject) {
+        
+        //Create & Display Alert
+        let directionsAlert = UIAlertController(title: "Directions 😎", message: "Press & hold down anywhere on the map to create a parking spot there. \n \n" + "Press the + button to create a parking spot where you are \n \n" + "Shake the phone or press the refresh button to get the latest parking spots \n \n" + "Press the magnifying glass to zoom into your location, the map will scroll as you move and follow you \n \n" + "Tell your friends! : The more people that use this the more efficient the service becomes" , preferredStyle: .alert)
+        
+        //Cancel Action
+        let dismissAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        directionsAlert.addAction(dismissAction)
+        
+        
+        self.present(directionsAlert, animated: true, completion: nil)
+
     }
     
     
