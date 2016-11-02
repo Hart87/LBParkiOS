@@ -61,6 +61,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    //------  FORCE TOUCH -----
+    
+    
+    enum ShortcutIdentifier: String
+    {
+        case View
+        
+        init?(fullType: String)
+        {
+            guard let last = fullType.components(separatedBy: ".").last else {return nil}
+            self.init(rawValue: last)
+        }
+        
+        var type: String
+        {
+            return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
+        }
+        
+    }
+    
+    
+    
+    @available(iOS 9.0, *)
+    func handleShortcutItem(_ shortcutItem: UIApplicationShortcutItem) -> Bool
+    {
+        var handled = false
+        
+        guard ShortcutIdentifier(fullType: shortcutItem.type) != nil else { return false }
+        guard let shortcutType = shortcutItem.type as String? else { return false }
+        
+        switch (shortcutType)
+        {
+            
+        case ShortcutIdentifier.View.type:
+            handled = true
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navVC = storyboard.instantiateViewController(withIdentifier: "View") as! UINavigationController
+            self.window?.rootViewController?.present(navVC, animated: true, completion: nil)
+            
+            break
+            
+        default:
+            break
+        }
+        
+        return handled
+        
+    }
+    
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void){
+        
+        let handledShhortcutItem = self.handleShortcutItem(shortcutItem)
+        completionHandler(handledShhortcutItem)
+        
+    }
 
 
 }

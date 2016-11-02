@@ -61,5 +61,18 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).View</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>View</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>See available parking.</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeMarkLocation</string>
+		</dict>
+	</array>
 </dict>
 </plist>

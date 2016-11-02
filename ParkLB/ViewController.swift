@@ -27,7 +27,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var currentPlacemark:CLPlacemark?
     let locationManager = CLLocationManager()
     let gestureRecognizer = UILongPressGestureRecognizer()
-    var poly: MKPolyline = MKPolyline()
     var alamoLat:String = ""
     var alamoLon:String = ""
     var alamoNote:String = ""
@@ -66,9 +65,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             mapView.showsUserLocation = true
         }
         
-        //Directions 
-       // let placemark = placemarks[0]
-        //self.currentPlacemark = placemark
         
         //Gesture Recognizer
             //Long Press
