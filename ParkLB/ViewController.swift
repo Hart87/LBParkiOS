@@ -24,8 +24,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     
     //Properties
+    var currentPlacemark:CLPlacemark?
     let locationManager = CLLocationManager()
     let gestureRecognizer = UILongPressGestureRecognizer()
+    var poly: MKPolyline = MKPolyline()
     var alamoLat:String = ""
     var alamoLon:String = ""
     var alamoNote:String = ""
@@ -64,6 +66,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             mapView.showsUserLocation = true
         }
         
+        //Directions 
+       // let placemark = placemarks[0]
+        //self.currentPlacemark = placemark
+        
         //Gesture Recognizer
             //Long Press
             gestureRecognizer.delegate = self
@@ -88,6 +94,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
            //Delete Annotations to clear map
             let allAnnotations = self.mapView.annotations
             self.mapView.removeAnnotations(allAnnotations)
+            mapView.removeOverlays(mapView.overlays)
             
            //Retrieve spot information and plot annotations
            GetSpots()
@@ -101,6 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //Delete Annotations to clear map
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
+        mapView.removeOverlays(mapView.overlays)
         
         //Retrieve spot information and plot annotations
         GetSpots()
@@ -352,8 +360,76 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
         
     }
-
     
+    //Annotation extras
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) ->
+        MKAnnotationView? {
+            let identifier = "MyPin"
+            if annotation.isKind(of: MKUserLocation.self) {
+                return nil
+            }
+            // Reuse the annotation if possible
+            var annotationView:MKPinAnnotationView? =
+                mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as?
+            MKPinAnnotationView
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation,
+                                                     reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+                //annotationView?.pinTintColor = UIColor.blue
+            }
+
+            //Right callout button
+            let btn = UIButton(type: .infoDark)
+            annotationView?.rightCalloutAccessoryView = btn
+            
+            return annotationView
+    }
+    
+    //Get directions for pin callout button
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        //Get directions ...
+        let directionRequest = MKDirectionsRequest()
+        
+        directionRequest.source = MKMapItem.forCurrentLocation()
+        
+        //
+        let selectedLoc = view.annotation
+        let selectedCoord = selectedLoc!.coordinate
+        let destinationPlacemark = MKPlacemark(coordinate: selectedCoord)
+        directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
+        directionRequest.transportType = .automobile
+        
+        //Calculate directions
+        let directions = MKDirections(request: directionRequest)
+        
+        directions.calculate { (routeResponse, routeError) -> Void in
+            
+            guard let routeResponse =  routeResponse else {
+                if let routeError = routeError {
+                print("error: \(routeError)")
+                }
+                
+                return
+            }
+            
+            let route = routeResponse.routes[0]
+            self.mapView.add(route.polyline, level: MKOverlayLevel.aboveRoads)
+            let rect = route.polyline.boundingMapRect
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+        }
+        
+    }
+    
+    //Draw the directions on the map
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.green
+        renderer.lineWidth = 3.0
+        
+        return renderer
+    }
     
     //Zoom Utitlity
     func zoomToUserLocationInMapView(_ mapView: MKMapView) {
