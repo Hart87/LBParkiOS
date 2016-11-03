@@ -86,7 +86,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     
                     self.activityInd.isHidden = true
                     self.activityInd.stopAnimating()
-                    self.numbersLabel.text = "24"
+                    self.numbersLabel.text = "\(self.pins.count)"
                     self.messageLabel.text = "New parking spots available 😎"
                 
         

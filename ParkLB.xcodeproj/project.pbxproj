@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5EF393173436637B47370E75 /* Pods_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31CDC5CEE99029663AF2D7F3 /* Pods_Widget.framework */; };
 		8F23D8E41DB094A300E76843 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23D8E31DB094A300E76843 /* Pin.swift */; };
+		8F32D3D61DCBF2AE00B54740 /* SpashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F32D3D51DCBF2AE00B54740 /* SpashViewController.swift */; };
 		8F9A0B991DB59E0100EC95F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F9A0B981DB59E0100EC95F2 /* GoogleService-Info.plist */; };
 		8F9A0B9E1DB5A20400EC95F2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9A0B9C1DB5A20400EC95F2 /* Fabric.framework */; };
 		8F9A0BA11DB5A53100EC95F2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9A0BA01DB5A53100EC95F2 /* Crashlytics.framework */; };
@@ -71,6 +72,7 @@
 		31CDC5CEE99029663AF2D7F3 /* Pods_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816674EBABB5BF85DA23EB9F /* Pods-Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Widget/Pods-Widget.release.xcconfig"; sourceTree = "<group>"; };
 		8F23D8E31DB094A300E76843 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		8F32D3D51DCBF2AE00B54740 /* SpashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpashViewController.swift; sourceTree = "<group>"; };
 		8F9A0B981DB59E0100EC95F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F9A0B9A1DB59EB600EC95F2 /* ParkLB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkLB-Bridging-Header.h"; sourceTree = "<group>"; };
 		8F9A0B9C1DB5A20400EC95F2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -189,6 +191,7 @@
 				8F23D8E31DB094A300E76843 /* Pin.swift */,
 				8FAED43E1DAF0C4200BD6F3A /* scratchPad.playground */,
 				8FAED4111DAD497300BD6F3A /* Main.storyboard */,
+				8F32D3D51DCBF2AE00B54740 /* SpashViewController.swift */,
 				8FAED4141DAD497300BD6F3A /* Assets.xcassets */,
 				8FAED4161DAD497300BD6F3A /* LaunchScreen.storyboard */,
 				8FAED4191DAD497300BD6F3A /* Info.plist */,
@@ -534,6 +537,7 @@
 			files = (
 				8FAED4101DAD497300BD6F3A /* ViewController.swift in Sources */,
 				8FAED40E1DAD497300BD6F3A /* AppDelegate.swift in Sources */,
+				8F32D3D61DCBF2AE00B54740 /* SpashViewController.swift in Sources */,
 				8F23D8E41DB094A300E76843 /* Pin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

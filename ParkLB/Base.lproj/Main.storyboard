@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MUL-OJ-6um">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FoZ-XB-mfS">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -93,6 +93,51 @@
             </objects>
             <point key="canvasLocation" x="681.15942028985512" y="-544.56521739130437"/>
         </scene>
+        <!--Spash View Controller-->
+        <scene sceneID="M3M-J5-bMl">
+            <objects>
+                <viewController id="FoZ-XB-mfS" customClass="SpashViewController" customModule="ParkLB" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S3n-M1-c3q"/>
+                        <viewControllerLayoutGuide type="bottom" id="Emi-zK-3Ao"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="55g-8A-xSM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWF-Ug-wYQ">
+                                <frame key="frameInset" minX="68" minY="214" width="238" height="239"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="rnw-dK-aui">
+                                        <frame key="frameInset" minX="-1" width="240" height="239"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rnw-dK-aui" firstAttribute="top" secondItem="tWF-Ug-wYQ" secondAttribute="top" id="AoA-lW-L8e"/>
+                                    <constraint firstAttribute="bottom" secondItem="rnw-dK-aui" secondAttribute="bottom" id="XZh-W1-7nr"/>
+                                    <constraint firstItem="rnw-dK-aui" firstAttribute="leading" secondItem="tWF-Ug-wYQ" secondAttribute="leading" id="piV-1f-HA0"/>
+                                    <constraint firstAttribute="trailing" secondItem="rnw-dK-aui" secondAttribute="trailing" id="zQs-d3-dLU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.44705882349999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tWF-Ug-wYQ" firstAttribute="centerX" secondItem="55g-8A-xSM" secondAttribute="centerX" id="Bhi-Ci-cPt"/>
+                            <constraint firstItem="tWF-Ug-wYQ" firstAttribute="width" secondItem="55g-8A-xSM" secondAttribute="width" id="QN9-Bp-RTP"/>
+                            <constraint firstItem="tWF-Ug-wYQ" firstAttribute="height" secondItem="55g-8A-xSM" secondAttribute="height" id="cVn-mV-7tF"/>
+                            <constraint firstItem="tWF-Ug-wYQ" firstAttribute="centerY" secondItem="55g-8A-xSM" secondAttribute="centerY" id="mu2-3d-PFH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="splashView" destination="tWF-Ug-wYQ" id="Rmf-GP-Jpi"/>
+                        <segue destination="MUL-OJ-6um" kind="showDetail" identifier="start" id="90w-Qc-aOq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zau-9w-MMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-938.39999999999998" y="-545.57721139430294"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="5pL-Zu-ek7">
             <objects>
@@ -114,5 +159,6 @@
     </scenes>
     <resources>
         <image name="reveal-icon" width="22" height="17"/>
+        <image name="splash" width="441" height="499"/>
     </resources>
 </document>
