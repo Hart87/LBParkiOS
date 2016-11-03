@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5EF393173436637B47370E75 /* Pods_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31CDC5CEE99029663AF2D7F3 /* Pods_Widget.framework */; };
 		8F23D8E41DB094A300E76843 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23D8E31DB094A300E76843 /* Pin.swift */; };
 		8F9A0B991DB59E0100EC95F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F9A0B981DB59E0100EC95F2 /* GoogleService-Info.plist */; };
 		8F9A0B9E1DB5A20400EC95F2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9A0B9C1DB5A20400EC95F2 /* Fabric.framework */; };
@@ -19,6 +20,10 @@
 		8FAED4231DAD497300BD6F3A /* ParkLBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAED4221DAD497300BD6F3A /* ParkLBTests.swift */; };
 		8FAED42E1DAD497400BD6F3A /* ParkLBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAED42D1DAD497400BD6F3A /* ParkLBUITests.swift */; };
 		8FAED43D1DAD4B8600BD6F3A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAED43C1DAD4B8600BD6F3A /* MapKit.framework */; };
+		8FDA8FB11DCAF3EB00AE7CD2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FDA8FB01DCAF3EB00AE7CD2 /* NotificationCenter.framework */; };
+		8FDA8FB41DCAF3EB00AE7CD2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDA8FB31DCAF3EB00AE7CD2 /* TodayViewController.swift */; };
+		8FDA8FB71DCAF3EB00AE7CD2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FDA8FB51DCAF3EB00AE7CD2 /* MainInterface.storyboard */; };
+		8FDA8FBB1DCAF3EB00AE7CD2 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8FDA8FAF1DCAF3EB00AE7CD2 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F0356160D3AF3008A8CA64BA /* Pods_ParkLB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 206419DB515BBF8E9AC8EA73 /* Pods_ParkLB.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,11 +42,34 @@
 			remoteGlobalIDString = 8FAED4091DAD497300BD6F3A;
 			remoteInfo = ParkLB;
 		};
+		8FDA8FB91DCAF3EB00AE7CD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8FAED4021DAD497300BD6F3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FDA8FAE1DCAF3EB00AE7CD2;
+			remoteInfo = Widget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8FDA8FBF1DCAF3EB00AE7CD2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8FDA8FBB1DCAF3EB00AE7CD2 /* Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		206419DB515BBF8E9AC8EA73 /* Pods_ParkLB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkLB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DDD5E966D5DEB1C91DE41C5 /* Pods-ParkLB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkLB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkLB/Pods-ParkLB.debug.xcconfig"; sourceTree = "<group>"; };
+		31CDC5CEE99029663AF2D7F3 /* Pods_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		816674EBABB5BF85DA23EB9F /* Pods-Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Widget/Pods-Widget.release.xcconfig"; sourceTree = "<group>"; };
 		8F23D8E31DB094A300E76843 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		8F9A0B981DB59E0100EC95F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F9A0B9A1DB59EB600EC95F2 /* ParkLB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkLB-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -63,7 +91,15 @@
 		8FAED42F1DAD497400BD6F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FAED43C1DAD4B8600BD6F3A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8FAED43E1DAF0C4200BD6F3A /* scratchPad.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = scratchPad.playground; sourceTree = "<group>"; };
+		8FDA8FAF1DCAF3EB00AE7CD2 /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FDA8FB01DCAF3EB00AE7CD2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		8FDA8FB31DCAF3EB00AE7CD2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		8FDA8FB61DCAF3EB00AE7CD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		8FDA8FB81DCAF3EB00AE7CD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FDFB5F71DCAFB4300BF48D9 /* ParkLB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ParkLB.entitlements; sourceTree = "<group>"; };
+		8FDFB5F81DCAFB9700BF48D9 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
 		C6E0466E53E90D4109E90D02 /* Pods-ParkLB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkLB.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkLB/Pods-ParkLB.release.xcconfig"; sourceTree = "<group>"; };
+		DD0CF63B3542C3B930A3FE44 /* Pods-Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Widget/Pods-Widget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +128,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8FDA8FAC1DCAF3EB00AE7CD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FDA8FB11DCAF3EB00AE7CD2 /* NotificationCenter.framework in Frameworks */,
+				5EF393173436637B47370E75 /* Pods_Widget.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -100,6 +145,8 @@
 			children = (
 				2DDD5E966D5DEB1C91DE41C5 /* Pods-ParkLB.debug.xcconfig */,
 				C6E0466E53E90D4109E90D02 /* Pods-ParkLB.release.xcconfig */,
+				DD0CF63B3542C3B930A3FE44 /* Pods-Widget.debug.xcconfig */,
+				816674EBABB5BF85DA23EB9F /* Pods-Widget.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -110,6 +157,7 @@
 				8FAED40C1DAD497300BD6F3A /* ParkLB */,
 				8FAED4211DAD497300BD6F3A /* ParkLBTests */,
 				8FAED42C1DAD497400BD6F3A /* ParkLBUITests */,
+				8FDA8FB21DCAF3EB00AE7CD2 /* Widget */,
 				8FAED40B1DAD497300BD6F3A /* Products */,
 				8FAED43B1DAD4B8600BD6F3A /* Frameworks */,
 				8DF90C2ADF938365BF3C77B9 /* Pods */,
@@ -122,6 +170,7 @@
 				8FAED40A1DAD497300BD6F3A /* ParkLB.app */,
 				8FAED41E1DAD497300BD6F3A /* ParkLBTests.xctest */,
 				8FAED4291DAD497400BD6F3A /* ParkLBUITests.xctest */,
+				8FDA8FAF1DCAF3EB00AE7CD2 /* Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +178,7 @@
 		8FAED40C1DAD497300BD6F3A /* ParkLB */ = {
 			isa = PBXGroup;
 			children = (
+				8FDFB5F71DCAFB4300BF48D9 /* ParkLB.entitlements */,
 				8F9A0B981DB59E0100EC95F2 /* GoogleService-Info.plist */,
 				8F9A0BA01DB5A53100EC95F2 /* Crashlytics.framework */,
 				8F9A0B9C1DB5A20400EC95F2 /* Fabric.framework */,
@@ -169,8 +219,21 @@
 			children = (
 				8FAED43C1DAD4B8600BD6F3A /* MapKit.framework */,
 				206419DB515BBF8E9AC8EA73 /* Pods_ParkLB.framework */,
+				8FDA8FB01DCAF3EB00AE7CD2 /* NotificationCenter.framework */,
+				31CDC5CEE99029663AF2D7F3 /* Pods_Widget.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8FDA8FB21DCAF3EB00AE7CD2 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				8FDFB5F81DCAFB9700BF48D9 /* Widget.entitlements */,
+				8FDA8FB31DCAF3EB00AE7CD2 /* TodayViewController.swift */,
+				8FDA8FB51DCAF3EB00AE7CD2 /* MainInterface.storyboard */,
+				8FDA8FB81DCAF3EB00AE7CD2 /* Info.plist */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,10 +250,12 @@
 				186DC9F85384E60041977734 /* [CP] Embed Pods Frameworks */,
 				2B76B5509574C77987875075 /* [CP] Copy Pods Resources */,
 				8F9A0B9B1DB5A1C400EC95F2 /* ShellScript */,
+				8FDA8FBF1DCAF3EB00AE7CD2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8FDA8FBA1DCAF3EB00AE7CD2 /* PBXTargetDependency */,
 			);
 			name = ParkLB;
 			productName = ParkLB;
@@ -233,6 +298,26 @@
 			productReference = 8FAED4291DAD497400BD6F3A /* ParkLBUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8FDA8FAE1DCAF3EB00AE7CD2 /* Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FDA8FBE1DCAF3EB00AE7CD2 /* Build configuration list for PBXNativeTarget "Widget" */;
+			buildPhases = (
+				B91066BF508B699D31A1B5E9 /* [CP] Check Pods Manifest.lock */,
+				8FDA8FAB1DCAF3EB00AE7CD2 /* Sources */,
+				8FDA8FAC1DCAF3EB00AE7CD2 /* Frameworks */,
+				8FDA8FAD1DCAF3EB00AE7CD2 /* Resources */,
+				647F261B34B44C8D1104C822 /* [CP] Embed Pods Frameworks */,
+				D57FA3A7504C0FDFD1CF368E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Widget;
+			productName = Widget;
+			productReference = 8FDA8FAF1DCAF3EB00AE7CD2 /* Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -248,6 +333,11 @@
 						DevelopmentTeam = 62FY2PCQP3;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					8FAED41D1DAD497300BD6F3A = {
 						CreatedOnToolsVersion = 8.0;
@@ -260,6 +350,17 @@
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8FAED4091DAD497300BD6F3A;
+					};
+					8FDA8FAE1DCAF3EB00AE7CD2 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 62FY2PCQP3;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -279,6 +380,7 @@
 				8FAED4091DAD497300BD6F3A /* ParkLB */,
 				8FAED41D1DAD497300BD6F3A /* ParkLBTests */,
 				8FAED4281DAD497400BD6F3A /* ParkLBUITests */,
+				8FDA8FAE1DCAF3EB00AE7CD2 /* Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -306,6 +408,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FDA8FAD1DCAF3EB00AE7CD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FDA8FB71DCAF3EB00AE7CD2 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +452,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParkLB/Pods-ParkLB-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		647F261B34B44C8D1104C822 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Widget/Pods-Widget-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7C82EA9EE93262636FCFB1A0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,6 +494,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run d21892c8888773f2488cde4eef49d2ab31f78de2 b63e6aa24e2e9d2a121a80f6e0e238e06128d74971f6c4c40ef47143919a5d54";
+		};
+		B91066BF508B699D31A1B5E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D57FA3A7504C0FDFD1CF368E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Widget/Pods-Widget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -399,6 +554,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8FDA8FAB1DCAF3EB00AE7CD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FDA8FB41DCAF3EB00AE7CD2 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -411,6 +574,11 @@
 			isa = PBXTargetDependency;
 			target = 8FAED4091DAD497300BD6F3A /* ParkLB */;
 			targetProxy = 8FAED42A1DAD497400BD6F3A /* PBXContainerItemProxy */;
+		};
+		8FDA8FBA1DCAF3EB00AE7CD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8FDA8FAE1DCAF3EB00AE7CD2 /* Widget */;
+			targetProxy = 8FDA8FB91DCAF3EB00AE7CD2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -429,6 +597,14 @@
 				8FAED4171DAD497300BD6F3A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8FDA8FB51DCAF3EB00AE7CD2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8FDA8FB61DCAF3EB00AE7CD2 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -529,7 +705,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2DDD5E966D5DEB1C91DE41C5 /* Pods-ParkLB.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ParkLB/ParkLB.entitlements;
 				DEVELOPMENT_TEAM = 62FY2PCQP3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -548,7 +726,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C6E0466E53E90D4109E90D02 /* Pods-ParkLB.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ParkLB/ParkLB.entitlements;
 				DEVELOPMENT_TEAM = 62FY2PCQP3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -617,6 +797,36 @@
 			};
 			name = Release;
 		};
+		8FDA8FBC1DCAF3EB00AE7CD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD0CF63B3542C3B930A3FE44 /* Pods-Widget.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
+				DEVELOPMENT_TEAM = 62FY2PCQP3;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = A2.ParkLB.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8FDA8FBD1DCAF3EB00AE7CD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 816674EBABB5BF85DA23EB9F /* Pods-Widget.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
+				DEVELOPMENT_TEAM = 62FY2PCQP3;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = A2.ParkLB.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -652,6 +862,15 @@
 			buildConfigurations = (
 				8FAED4391DAD497400BD6F3A /* Debug */,
 				8FAED43A1DAD497400BD6F3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8FDA8FBE1DCAF3EB00AE7CD2 /* Build configuration list for PBXNativeTarget "Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FDA8FBC1DCAF3EB00AE7CD2 /* Debug */,
+				8FDA8FBD1DCAF3EB00AE7CD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,3 +9,8 @@ target 'ParkLB' do
     pod 'Firebase/AdMob'
     pod 'SwiftyJSON'
 end
+
+target 'Widget' do
+    pod 'Alamofire', '~> 4.0'
+    pod 'SwiftyJSON'
+end

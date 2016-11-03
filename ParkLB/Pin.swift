@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Pin {
+public class Pin {
     var note:String = ""
     var time:String = ""
     var latitude:Double = 0.00
