@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var bannerView: GADBannerView!
     
+    // GIT Clone Test
     
     //Properties
     var currentPlacemark:CLPlacemark?
