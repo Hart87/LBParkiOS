@@ -13,9 +13,11 @@ import AudioToolbox
 import Alamofire
 import SwiftyJSON
 import GoogleMobileAds
+import Social
+import MessageUI
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate,MFMessageComposeViewControllerDelegate {
     
     //Outlets
     @IBOutlet var mapView: MKMapView!
@@ -33,6 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var alamoNote:String = ""
     var alamoTime:String = ""
     var pins = [Pin]() //Array for annotations from object (Pin.swift)
+    var addressString:String = "empty"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -386,44 +389,132 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //Get directions for pin callout button
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        //Get directions ...
-        let directionRequest = MKDirectionsRequest()
+        let optionsMenu = UIAlertController(title: "Options", message: "What would you like to do?", preferredStyle: .actionSheet)
         
-        directionRequest.source = MKMapItem.forCurrentLocation()
-        
-        //
-        let selectedLoc = view.annotation
-        let selectedCoord = selectedLoc!.coordinate
-        let destinationPlacemark = MKPlacemark(coordinate: selectedCoord)
-        directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
-        directionRequest.transportType = .automobile
-        
-        //Calculate directions
-        let directions = MKDirections(request: directionRequest)
-        
-        directions.calculate { (routeResponse, routeError) -> Void in
+        //Get Directions ...
+        let directions = UIAlertAction(title: "Directions", style: UIAlertActionStyle.default, handler:{ (action) -> Void in
             
-            guard let routeResponse =  routeResponse else {
-                if let routeError = routeError {
-                print("error: \(routeError)")
+            //Remove previous overlay before starting
+            mapView.removeOverlays(mapView.overlays)
+            
+            let directionRequest = MKDirectionsRequest()
+            
+            directionRequest.source = MKMapItem.forCurrentLocation()
+            
+            //
+            let selectedLoc = view.annotation
+            let selectedCoord = selectedLoc!.coordinate
+            let destinationPlacemark = MKPlacemark(coordinate: selectedCoord)
+            directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
+            directionRequest.transportType = .automobile
+            
+            //Calculate directions
+            let directions = MKDirections(request: directionRequest)
+            
+            directions.calculate { (routeResponse, routeError) -> Void in
+                
+                guard let routeResponse =  routeResponse else {
+                    if let routeError = routeError {
+                        print("error: \(routeError)")
+                    }
+                    
+                    return
                 }
                 
-                return
+                let route = routeResponse.routes[0]
+                self.mapView.add(route.polyline, level: MKOverlayLevel.aboveRoads)
+                let rect = route.polyline.boundingMapRect
+                self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
             }
             
-            let route = routeResponse.routes[0]
-            self.mapView.add(route.polyline, level: MKOverlayLevel.aboveRoads)
-            let rect = route.polyline.boundingMapRect
-            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+            
+        })
+        
+        //Text Address
+        let textAction = UIAlertAction(title: "Text Address", style: UIAlertActionStyle.default, handler: {(action) -> Void in
+            
+            //reverse geocode address
+            let selectedLoc = view.annotation
+            let lat = selectedLoc?.coordinate.latitude
+            let long = selectedLoc?.coordinate.longitude
+            let cll = CLLocation(latitude: lat!, longitude: long!)
+            
+            CLGeocoder().reverseGeocodeLocation(cll, completionHandler: {(placemarks, error) -> Void in
+                
+                if error != nil {
+                    print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                    return
+                }
+                
+                if (placemarks?.count)! > 0 {
+                    let pm = placemarks![0] as! CLPlacemark
+                    self.displayLocationInfo(placemark: pm)
+                }
+                else {
+                    print("Problem with the data received from geocoder")
+                }
+                
+                //Text the info...
+                if !MFMessageComposeViewController.canSendText(){
+                    let alertMessage2 = UIAlertController(title: "SMS Unavailable", message: "Your device is not capable of sending SMS", preferredStyle: .alert)
+                    alertMessage2.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alertMessage2, animated: true, completion: nil)
+                    return
+                    
+                }else{
+                    
+                    //Prefill the SMS
+                    let messageController = MFMessageComposeViewController()
+                    messageController.messageComposeDelegate = self
+                    //messageController.recipients = ["(908)917-2127"]
+                    messageController.body = "Parking space available @ \(self.addressString)"
+                    
+                    self.present(messageController, animated: true, completion: nil)
+                    
+                }
+
+                
+            })
+
+            
+            
+        })
+        
+        //Cancel Action
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
         }
         
+        optionsMenu.addAction(directions)
+        optionsMenu.addAction(textAction)
+        optionsMenu.addAction(cancelAction)
+        
+        self.present(optionsMenu, animated: true, completion: nil)
+
+        
     }
+    
+    func displayLocationInfo(placemark: CLPlacemark){
+        
+        self.locationManager.stopUpdatingLocation()
+        
+        let  subthor = placemark.subThoroughfare!
+        let throughfare = placemark.thoroughfare!
+        let locality = placemark.locality!
+        let adminArea = placemark.administrativeArea!
+        let postalCode = placemark.postalCode!
+        //var country = placemark.country
+        
+        let userLocation = "\(subthor) \(throughfare) \(locality) \(adminArea) \(postalCode)"
+        self.addressString = userLocation
+        
+    }
+    
     
     //Draw the directions on the map
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.green
-        renderer.lineWidth = 3.0
+        renderer.lineWidth = 4.0
         
         return renderer
     }
@@ -459,6 +550,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     
+    func messageComposeViewController(_ controller: MFMessageComposeViewController,
+                                      didFinishWith result: MessageComposeResult) {
+        switch(result) {
+        
+        case MessageComposeResult.cancelled:
+            print("SMS cancelled")
+        
+        case MessageComposeResult.failed:
+            let alertMessage = UIAlertController(title: "Failure", message: "Failed to send the message.", preferredStyle: .alert)
+                alertMessage.addAction(UIAlertAction(title: "OK", style: .default,
+                                                     handler: nil))
+                present(alertMessage, animated: true, completion: nil)
+        
+        case MessageComposeResult.sent:
+            print("SMS sent")
+        
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
