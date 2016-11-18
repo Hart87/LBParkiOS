@@ -369,15 +369,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 return nil
             }
             // Reuse the annotation if possible
-            var annotationView:MKPinAnnotationView? =
+            var annotationView:MKAnnotationView? =
                 mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as?
             MKPinAnnotationView
             if annotationView == nil {
-                annotationView = MKPinAnnotationView(annotation: annotation,
+                annotationView = MKAnnotationView(annotation: annotation,
                                                      reuseIdentifier: identifier)
                 annotationView?.canShowCallout = true
                 //annotationView?.pinTintColor = UIColor.blue
+                annotationView!.image = UIImage(named: "pinicon.png")
             }
+            
+            //Left iconView
+            let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 53, height: 53))
+            leftIconView.image = UIImage(named: "liview.png")
+            annotationView?.leftCalloutAccessoryView = leftIconView
 
             //Right callout button
             let btn = UIButton(type: .infoDark)
